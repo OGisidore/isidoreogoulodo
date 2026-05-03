@@ -1,0 +1,44 @@
+{% if site.languages.size > 1 %}
+  <div class="lang-switcher-wrap w-100 px-3 mt-2 mb-2">
+    <label for="sidebar-lang-select" class="form-label small text-muted text-uppercase mb-1 fw-semibold letter-spacing-tight">
+      {% if include.lang == 'fr-FR' %}Langue{% else %}Language{% endif %}
+    </label>
+    <div class="lang-switcher-select-shell position-relative">
+      <i class="fas fa-globe lang-switcher-icon" aria-hidden="true"></i>
+      <select
+        id="sidebar-lang-select"
+        class="form-select form-select-sm lang-switcher-select"
+        autocomplete="off"
+        aria-label="{% if include.lang == 'fr-FR' %}Choisir la langue du site{% else %}Choose site language{% endif %}"
+      >
+        {% for lang in site.languages %}
+          {% capture lang_label -%}
+            {%- case lang -%}
+              {%- when 'en' -%}English
+              {%- when 'fr-FR' -%}Français
+              {%- else -%}{{ lang }}
+            {%- endcase -%}
+          {%- endcapture %}
+          {% capture lang_href -%}
+            {{- site.baseurl -}}/{% if lang != site.default_lang %}{{ lang }}/{% endif %}{% if page.permalink_lang %}{% assign pl = page.permalink_lang[lang] %}{% if pl and pl != '/' %}{{ pl }}{% endif %}{% endif %}
+          {%- endcapture %}
+          {% assign lang_href_clean = lang_href | strip | replace: ' ', '' | replace: '//', '/' %}
+          <option value="{{ lang_href_clean | relative_url }}"{% if lang == site.active_lang %} selected{% endif %}>
+            {{ lang_label | strip }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var sel = document.getElementById('sidebar-lang-select');
+      if (!sel || sel.dataset.bound) return;
+      sel.dataset.bound = '1';
+      sel.addEventListener('change', function () {
+        var v = this.value;
+        if (v) window.location.href = v;
+      });
+    })();
+  </script>
+{% endif %}

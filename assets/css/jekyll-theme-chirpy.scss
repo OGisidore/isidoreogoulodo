@@ -1,0 +1,50 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* Language switcher (Polyglot) — sidebar */
+.lang-switcher-wrap .letter-spacing-tight {
+  letter-spacing: 0.04em;
+}
+
+.lang-switcher-select-shell {
+  .lang-switcher-icon {
+    position: absolute;
+    left: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    opacity: 0.55;
+    font-size: 0.85rem;
+    pointer-events: none;
+  }
+
+  .lang-switcher-select {
+    padding-left: 2rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border: 1px solid var(--bs-border-color);
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+
+    &:focus {
+      border-color: var(--bs-primary);
+      box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.22);
+    }
+  }
+}
+
+html[data-mode='dark'] .lang-switcher-select-shell .lang-switcher-select {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}

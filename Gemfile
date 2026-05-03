@@ -4,6 +4,10 @@ source "https://rubygems.org"
 
 gem "jekyll-theme-chirpy", "~> 7.3"
 
+group :jekyll_plugins do
+  gem "jekyll-polyglot", "~> 1.8"
+end
+
 gem "html-proofer", "~> 5.0", group: :test
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do

@@ -7,6 +7,9 @@ tags: [homelab, proxmox, kubernetes, k3s, kube-vip, metallb, nginx]
 image:
   path: /assets/img/headers/k8s-blocks.webp
 pin: true
+page_id: post-k3s-ha
+permalink: /posts/k3s-ha-install/
+lang-exclusive: ['en']
 ---
 
 k3s is a lightweight Kubernetes distribution that is designed to run in resource-constrained environments such as edge and IoT devices. In this documentation, we will be discussing how to set up a highly available k3s cluster with an embedded database on three nodes using kube-vip to load balance the control plane API and use MetalLB as a load balancer for exposing our applications.

@@ -8,6 +8,28 @@ theme: jekyll-theme-chirpy
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
 
+# jekyll-polyglot — https://github.com/untra/polyglot
+# Locale keys must match files in the theme: `_data/locales/en.yml`, `fr-FR.yml`, etc.
+languages: ["en", "fr-FR"]
+default_lang: "en"
+lang_from_path: true
+parallel_localization: true
+# Shared / heavy binary paths: do not prefix with /fr-FR/ (pages still load from site root)
+exclude_from_localization:
+  - "assets/js/dist"
+  - "assets/img"
+  - "sw.js"
+  - "swconf.js"
+
+# Load order: polyglot first (preprocesses each language build)
+plugins:
+  - jekyll-polyglot
+  - jekyll-archives
+  - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Europe/Brussels
 
@@ -205,16 +227,17 @@ compress_html:
   ignore:
     envs: [development]
 
+# Avoid glob patterns here: jekyll-polyglot can mis-handle them (build failures).
 exclude:
-  - "*.gem"
-  - "*.gemspec"
   - docs
   - tools
   - README.md
   - LICENSE
   - purgecss.js
-  - "*.config.js"
-  - "package*.json"
+  - package.json
+  - package-lock.json
+  - node_modules
+  - vendor
 
 jekyll-archives:
   enabled: [categories, tags]

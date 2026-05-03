@@ -7,6 +7,9 @@ tags: [aws, ec2, vpc, ssh, iam, devops]
 image:
   path: /assets/img/headers/aws-ec2.png
 pin: false
+page_id: post-ec2-aws
+permalink: /posts/creer-instance-ec2/
+lang-exclusive: ['fr-FR']
 ---
 
 Amazon EC2 permet de lancer rapidement des serveurs virtuels dans le cloud. Dans ce guide, nous allons créer une instance EC2 de façon simple, puis nous connecter en SSH et appliquer les bonnes pratiques de base.
